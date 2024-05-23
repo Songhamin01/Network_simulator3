@@ -11,6 +11,7 @@ private:
 public:
   Address(int address) : address_(address) {}
   std::string toString() const { return std::to_string(address_); }
+  short toShort() const { return static_cast<short>(address_); }
   bool operator==(const Address &rhs) const { return address_ == rhs.address_; }
 };
 
