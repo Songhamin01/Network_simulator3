@@ -2,12 +2,12 @@
 #define ROUTER_H
 
 #include "node.h"
-#include <iostream>
 
 struct RoutingEntry {
 public:
   Address destination;
   Link *nextLink;
+  // RoutingEntry() : destination(0){}
 };
 
 class Router : public Node {
