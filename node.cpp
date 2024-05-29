@@ -6,3 +6,8 @@ bool Node::operator==(Node *a)
         return true;
     return false;
 }
+
+void Node::pushPacket(Packet* p)
+{
+    packets = p;
+}

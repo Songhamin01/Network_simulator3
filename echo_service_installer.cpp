@@ -3,7 +3,7 @@
 // 호스트에 EchoService를 설치한다.
 EchoService *EchoServiceInstaller::install(Host *host)
 {
-    EchoService* e = new EchoService(host, host->address().toShort());
+    e = new EchoService(host, host->address().toShort());
     ServiceInstaller::install(host, e);
     return e;
 }

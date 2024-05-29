@@ -2,6 +2,9 @@
 #define LINK_H
 
 #include "packet.h"
+#include "link.h"
+#include "router.h"
+#include "node.h"
 #include <cstdlib>
 
 class Node;
@@ -18,6 +21,9 @@ private:
   Node *other(const Node *node) const {
     return node == nodeA_ ? nodeB_ : nodeA_;
   }
+
+public:
+  void nextLink(Node *n, Packet *p);
 };
 
 #endif

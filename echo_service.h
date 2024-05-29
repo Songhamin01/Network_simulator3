@@ -3,6 +3,7 @@
 
 #include "host.h"
 #include "service.h"
+#include "packet.h"
 #include <iostream>
 #include <string>
 
@@ -12,6 +13,9 @@ class EchoService : public Service {
 
 private:
   EchoService(Host *host, short port) : Service(host, port) {}
+
+public:
+  void result();
 };
 
 #endif
