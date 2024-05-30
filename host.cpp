@@ -2,6 +2,14 @@
 #include <cstdlib>
 #include <iostream>
 
+Host::~Host()
+{
+    for (int i = 0; i < services_.size(); ++i)
+    {
+        delete services_[i];
+    }
+}
+
 // 호스트와 설치된 서비스를 전부 초기화한다.
 void Host::initialize()
 {
@@ -16,9 +24,10 @@ void Host::send(Packet *packet)
     std::cout << "Host #" << id() << ": sending packet (from: " << packet->srcAddress().toString() << ", to: " << packet->destAddress().toString() << ", " << packet->dataString().length() << " bytes)" << std::endl;
 }
 
-void Host::receive()
+void Host::receiving()
 {
     bool isTrue = false;
+    std::cout << "Host #" << id() << ": received packet, destination port: " << packets->destPort() << std::endl;
     for(int i = 0; i < services_.size(); ++i)
     {
         if(services_[i]->getPort() == packets->destPort())

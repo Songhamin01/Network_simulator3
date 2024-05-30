@@ -18,11 +18,12 @@ protected:
 
 public:
   Node() : id_(nextId_++) {}
+  ~Node();
   int id() const { return id_; }
   bool operator==(Node *a);
   std::vector<Link *> links_;
   void pushPacket(Packet *p);
-  void receive();
+  void receiving();
   Packet *getPacket() {return packets;}
 };
 

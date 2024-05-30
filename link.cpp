@@ -1,7 +1,7 @@
 #include "link.h"
 #include <iostream>
 
-void Link::nextLink(Node *n, Packet *p)
+void Link::whatLink(Node *n, Packet *p)
 {
     Node *nextNode = other(n);
     nextNode->pushPacket(p);

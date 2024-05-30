@@ -23,7 +23,7 @@ private:
   }
 
 public:
-  void nextLink(Node *n, Packet *p);
+  void whatLink(Node *n, Packet *p);
 };
 
 #endif

@@ -2,6 +2,7 @@
 #define ROUTER_H
 
 #include "node.h"
+#include <iostream>
 
 struct RoutingEntry {
 public:
@@ -13,6 +14,10 @@ public:
 class Router : public Node {
 protected:
   std::vector<RoutingEntry> routingTable_;
+
+public:
+  ~Router();
+  void receiving();
 };
 
 #endif

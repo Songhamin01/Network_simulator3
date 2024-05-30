@@ -1,5 +1,10 @@
 #include "node.h"
 
+Node::~Node()
+{
+    delete packets;
+}
+
 bool Node::operator==(Node *a)
 {
     if (a->id_ == id_)
@@ -10,4 +15,9 @@ bool Node::operator==(Node *a)
 void Node::pushPacket(Packet* p)
 {
     packets = p;
+}
+
+void Node::receiving()
+{
+    
 }
