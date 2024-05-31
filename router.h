@@ -4,6 +4,8 @@
 #include "node.h"
 #include <iostream>
 
+class Link;
+
 struct RoutingEntry {
 public:
   Address destination;
