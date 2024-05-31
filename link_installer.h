@@ -2,6 +2,7 @@
 #define LINK_INSTALLER_H
 
 #include "link.h"
+#include "node.h"
 #include "service.h"
 
 class LinkInstaller {

@@ -19,6 +19,7 @@ protected:
 
 public:
   short getPort(){return port_;}
+  virtual void result() = 0;
 };
 
 #endif

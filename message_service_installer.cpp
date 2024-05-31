@@ -3,7 +3,17 @@
 // 호스트에 MessageService를 설치한다
 MessageService *MessageServiceInstaller::install(Host *host)
 {
-    m = new MessageService(host, host->address().toShort(), this->destAddress_, this->destPort_);
+    int thisPort = c_port;
+    std::vector<Service *> ser = host->getSer();
+    for (int i = 0; i < ser.size(); ++i)
+    {
+        if (ser[i]->getPort() == thisPort)
+        {
+            thisPort++;
+        }
+    }
+    m = new MessageService(host, thisPort, this->destAddress_, this->destPort_);
     ServiceInstaller::install(host, m);
     return m;
+    
 }

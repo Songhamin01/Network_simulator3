@@ -20,11 +20,11 @@ public:
   Node() : id_(nextId_++) {}
   ~Node();
   int id() const { return id_; }
-  bool operator==(Node *a);
-  std::vector<Link *> links_;
-  void pushPacket(Packet *p);
-  void receiving();
   Packet *getPacket() {return packets;}
+  std::vector<Link *> links_;
+  bool operator==(Node *a);
+  void pushPacket(Packet *p);
+  virtual void receiving() = 0;
 };
 
 #endif

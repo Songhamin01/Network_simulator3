@@ -9,18 +9,17 @@ node.o: node.cpp node.h packet.h
 host.o: host.cpp host.h node.h
 	$(CC) $(CFLAGS) -c -o host.o host.cpp
 
-link.o: link.cpp link.h
-	$(CC) $(CFLAGS) -c -o link.o link.cpp
-
-link_installer.o: link_installer.cpp link_installer.h
-	$(CC) $(CFLAGS) -c -o link_installer.o link_installer.cpp
-	
 router.o: router.cpp router.h	node.h
 	$(CC) $(CFLAGS) -c -o router.o router.cpp
 
 manual_router.o: manual_router.cpp manual_router.h router.h
 	$(CC) $(CFLAGS) -c -o manual_router.o manual_router.cpp
 
+link.o: link.cpp link.h
+	$(CC) $(CFLAGS) -c -o link.o link.cpp
+
+link_installer.o: link_installer.cpp link_installer.h
+	$(CC) $(CFLAGS) -c -o link_installer.o link_installer.cpp
 
 service_installer.o:service_installer.cpp service_installer.h
 	$(CC) $(CFLAGS) -c -o service_installer.o service_installer.cpp

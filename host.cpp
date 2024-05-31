@@ -20,8 +20,8 @@ void Host::initialize()
 void Host::send(Packet *packet)
 {
     int num = rand() % links_.size();
-    links_.at(num)->nextLink(this, packet);
     std::cout << "Host #" << id() << ": sending packet (from: " << packet->srcAddress().toString() << ", to: " << packet->destAddress().toString() << ", " << packet->dataString().length() << " bytes)" << std::endl;
+    links_.at(num)->whatLink(this, packet);
 }
 
 void Host::receiving()

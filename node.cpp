@@ -16,8 +16,3 @@ void Node::pushPacket(Packet* p)
 {
     packets = p;
 }
-
-void Node::receiving()
-{
-    
-}

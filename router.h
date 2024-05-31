@@ -8,7 +8,7 @@ struct RoutingEntry {
 public:
   Address destination;
   Link *nextLink;
-  // RoutingEntry() : destination(0){}
+  RoutingEntry() : destination(0){}
 };
 
 class Router : public Node {

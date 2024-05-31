@@ -4,6 +4,7 @@
 #include "address.h"
 #include "message_service.h"
 #include "service_installer.h"
+#include <vector>
 
 class MessageServiceInstaller : public ServiceInstaller {
 private:
