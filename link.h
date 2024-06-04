@@ -2,9 +2,7 @@
 #define LINK_H
 
 #include "packet.h"
-#include "link.h"
-#include "router.h"
-#include "node.h"
+#include <iostream>
 #include <cstdlib>
 
 class Node;

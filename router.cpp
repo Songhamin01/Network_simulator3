@@ -1,4 +1,5 @@
 #include "router.h"
+#include <iostream>
 
 Router::~Router()
 {
@@ -8,7 +9,7 @@ Router::~Router()
 void Router::receiving()
 {
     bool isTrue = false;
-    for(int i = 0; i < routingTable_.size(); ++i)
+    for(int i = 0; i < (int)routingTable_.size(); ++i)
     {
         if(routingTable_[i].destination == packets->destAddress())
         {

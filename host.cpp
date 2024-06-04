@@ -4,7 +4,7 @@
 
 Host::~Host()
 {
-    for (int i = 0; i < services_.size(); ++i)
+    for (int i = 0; i < (int)services_.size(); ++i)
     {
         delete services_[i];
     }
@@ -13,7 +13,7 @@ Host::~Host()
 // 호스트와 설치된 서비스를 전부 초기화한다.
 void Host::initialize()
 {
-    for(int i = 0; i < services_.size(); ++i)
+    for(int i = 0; i < (int)services_.size(); ++i)
     {
         services_[i] = nullptr;
     }

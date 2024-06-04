@@ -18,7 +18,7 @@ protected:
 
 public:
   Node() : id_(nextId_++) {}
-  virtual ~Node(){};
+  virtual ~Node();
   int id() const { return id_; }
   Packet *getPacket() {return packets;}
   bool operator==(Node *a);

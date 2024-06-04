@@ -1,4 +1,6 @@
 #include "link.h"
+#include "node.h"
+#include "router.h"
 #include <iostream>
 
 void Link::whatLink(Node *n, Packet *p)

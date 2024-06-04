@@ -3,7 +3,7 @@
 // 호스트에 EchoService를 설치한다.
 EchoService *EchoServiceInstaller::install(Host *host)
 {
-    e = new EchoService(host, (int)listenPort_);
+    e = new EchoService(host, listenPort_);
     this->ServiceInstaller::install(host, e);
     return e;
 }

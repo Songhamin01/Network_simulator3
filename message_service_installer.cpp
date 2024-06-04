@@ -1,4 +1,6 @@
 #include "message_service_installer.h"
+#include <iostream>
+#include <vector>
 
 // 호스트에 MessageService를 설치한다
 MessageService *MessageServiceInstaller::install(Host *host)

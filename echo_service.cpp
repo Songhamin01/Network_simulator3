@@ -1,4 +1,6 @@
 #include "echo_service.h"
+#include "packet.h"
+#include <iostream>
 
 EchoService::~EchoService()
 {

@@ -1,4 +1,6 @@
 #include "message_service.h"
+#include "packet.h"
+#include <iostream>
 
 MessageService::~MessageService()
 {
