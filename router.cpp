@@ -24,3 +24,4 @@ void Router::receiving()
         std::cout << "Router #" << id() << ": no router for packet (from: " << packets->srcAddress().toString() << ", to: " << packets->destAddress().toString() << ", " << packets->dataString().length() << " bytes)" << std::endl;
     }
 }
+

@@ -8,9 +8,9 @@ class Link;
 
 struct RoutingEntry {
 public:
+  RoutingEntry() : destination(0){}
   Address destination;
   Link *nextLink;
-  RoutingEntry() : destination(0){}
 };
 
 class Router : public Node {

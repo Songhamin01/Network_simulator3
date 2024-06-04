@@ -9,6 +9,7 @@ class ManualRouter : public Router {
 public:
   // 목적지 주소에 따른 다음 링크를 설정한다.
   void addRoutingEntry(const Address &destination, Link *nextLink);
+  void receiving() { Router::receiving(); }
 };
 
 #endif

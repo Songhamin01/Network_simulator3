@@ -8,8 +8,4 @@ void ManualRouter::addRoutingEntry(const Address &destination, Link *nextLink)
     re.destination = destination;
     re.nextLink = nextLink;
     routingTable_.push_back(re);
-    // RoutingEntry* re;
-    // re->destination = destination;
-    // re->nextLink = nextLink;
-    // routingTable_.push_back(*re);
 }

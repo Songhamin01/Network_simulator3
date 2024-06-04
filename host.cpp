@@ -13,7 +13,10 @@ Host::~Host()
 // 호스트와 설치된 서비스를 전부 초기화한다.
 void Host::initialize()
 {
-    services_.clear();  
+    for(int i = 0; i < services_.size(); ++i)
+    {
+        services_[i] = nullptr;
+    }
 }
 
 // 링크를 랜덤으로 하나 선택하여 패킷을 전송한다.
@@ -28,10 +31,11 @@ void Host::receiving()
 {
     bool isTrue = false;
     std::cout << "Host #" << id() << ": received packet, destination port: " << packets->destPort() << std::endl;
-    for(int i = 0; i < services_.size(); ++i)
+    for(int i = 0; i < (int)services_.size(); ++i)
     {
         if(services_[i]->getPort() == packets->destPort())
         {
+            services_[i]->result();
             isTrue = true;
             break;
         }

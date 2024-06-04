@@ -1,13 +1,10 @@
 #include "node.h"
 
-Node::~Node()
-{
-    delete packets;
-}
+int Node::nextId_ = 0;
 
 bool Node::operator==(Node *a)
 {
-    if (a->id_ == id_)
+    if (a->id() == id_)
         return true;
     return false;
 }

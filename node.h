@@ -14,14 +14,13 @@ private:
 
 protected:
   Packet *packets;
-
+  std::vector<Link *> links_;
 
 public:
   Node() : id_(nextId_++) {}
-  ~Node();
+  virtual ~Node(){};
   int id() const { return id_; }
   Packet *getPacket() {return packets;}
-  std::vector<Link *> links_;
   bool operator==(Node *a);
   void pushPacket(Packet *p);
   virtual void receiving() = 0;

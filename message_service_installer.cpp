@@ -5,7 +5,7 @@ MessageService *MessageServiceInstaller::install(Host *host)
 {
     int thisPort = c_port;
     std::vector<Service *> ser = host->getSer();
-    for (int i = 0; i < ser.size(); ++i)
+    for (int i = 0; i < (int)ser.size(); ++i)
     {
         if (ser[i]->getPort() == thisPort)
         {
@@ -13,7 +13,7 @@ MessageService *MessageServiceInstaller::install(Host *host)
         }
     }
     m = new MessageService(host, thisPort, this->destAddress_, this->destPort_);
-    ServiceInstaller::install(host, m);
+    this->ServiceInstaller::install(host, m);
     return m;
     
 }
