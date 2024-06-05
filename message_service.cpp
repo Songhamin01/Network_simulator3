@@ -4,7 +4,10 @@
 
 MessageService::~MessageService()
 {
-    delete p;
+    // for(Packet *p : pac)
+    // {
+    //     delete p;
+    // }
 }
 
 // 메시지를 전송한다
@@ -12,6 +15,7 @@ void MessageService::send(std::string message)
 {
     p = new Packet(host_->address(), destAddress_, port_, destPort_, message);
     host_->send(p);
+    // pac.push_back(p);
 }
 
 void MessageService::result()

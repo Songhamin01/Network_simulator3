@@ -7,6 +7,7 @@
 #include "service.h"
 #include "packet.h"
 #include <iostream>
+#include <vector>
 
 // send 함수를 호출하여 메시지를 전송할 수 있는 서비스
 class MessageService : public Service {
@@ -20,6 +21,7 @@ private:
   MessageService(Host *host, short port, Address destAddress, short destPort)
       : Service(host, port), destAddress_(destAddress), destPort_(destPort) {}
   Packet *p;
+  std::vector<Packet *> pac;
 
 public:
   ~MessageService();

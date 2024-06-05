@@ -1,10 +1,14 @@
 #include "echo_service.h"
 #include "packet.h"
 #include <iostream>
+#include <vector>
 
 EchoService::~EchoService()
 {
-    delete packets;
+    // for(Packet *p : pac)
+    // {
+    //     delete p;
+    // }
 }
 
 void EchoService::result()
@@ -17,4 +21,5 @@ void EchoService::send()
 {
     packets = new Packet(host_->address(), host_->getPacket()->srcAddress(), port_, host_->getPacket()->srcPort(), host_->getPacket()->data());
     host_->send(packets);
+    // pac.push_back(packets);
 }
