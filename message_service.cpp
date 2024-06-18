@@ -21,4 +21,5 @@ void MessageService::send(std::string message)
 void MessageService::result()
 {
     std::cout << "MessageService: received \"" << host_->getPacket()->dataString() << "\" from " << host_->getPacket()->srcAddress().toString() << ":" << host_->getPacket()->srcPort() << std::endl;
+    delete host_->getPacket();
 }

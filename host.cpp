@@ -42,6 +42,7 @@ void Host::receiving()
     if (!isTrue)
     {
         std::cout << "Host #" << id() << ": no service for packet (from: " << packets->srcAddress().toString() << ", to: " << packets->destAddress().toString() << ", " << packets->dataString().length() << " bytes" << std::endl;
+        delete packets;
     }
     
 }
