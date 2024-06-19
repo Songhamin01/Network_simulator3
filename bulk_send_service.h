@@ -45,7 +45,7 @@ public:
 
   void result(Packet *p)
   {
-    
+    delete p;
   }
 };
 
