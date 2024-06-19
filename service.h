@@ -9,6 +9,9 @@ class Host;
 class Service : public Object {
   friend class ServiceInstaller;
 
+private:
+  virtual std::string name(){ return "Service"; }
+
 protected:
   // 서비스가 설치된 호스트
   Host *host_;
@@ -21,7 +24,7 @@ protected:
 public:
   virtual ~Service(){}
   short getPort(){return port_;}
-  virtual void result() = 0;
+  virtual void result(Packet *p) = 0;
 };
 
 #endif

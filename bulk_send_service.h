@@ -4,6 +4,8 @@
 #include "host.h"
 #include "service.h"
 #include "simulator.h"
+#include <vector>
+#include <iostream>
 
 #define c_port 1000
 #define PACKET_SIZE 512
@@ -29,7 +31,21 @@ private:
 public:
   void send()
   {
+    Packet *p = new Packet(host_->address(), destAddr, port_, destP, d);
+    startT += delay_;
+    std::string m = "sending data";
+    log(m);
+    host_->send(p);
+    std::function<void()> f = [this]() {this->send();};
+    if(startT < stopT)
+    {
+      Simulator::schedule(startT, f);
+    }
+  }
 
+  void result()
+  {
+    
   }
 };
 

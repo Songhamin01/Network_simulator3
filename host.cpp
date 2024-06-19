@@ -24,15 +24,16 @@ void Host::send(Packet *packet)
     links_.at(num)->whatLink(this, packet);
 }
 
-void Host::receiving()
+void Host::receiving(Packet *p)
 {
     bool isTrue = false;
-    std::cout << services_.size();
-    std::cout << "Host #" << id() << ": received packet, destination port: " << packets->destPort() << std::endl;
+    std::string m = "received packet: " + p->toString();
     for(int i = 0; i < (int)services_.size(); ++i)
     {
         if(services_[i]->getPort() == packets->destPort())
         {
+            m += ", forwarding to " + services_[i]->toString();
+            log(m);
             services_[i]->result();
             isTrue = true;
             break;

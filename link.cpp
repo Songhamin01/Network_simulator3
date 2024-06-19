@@ -11,13 +11,12 @@ void Link::whatLink(Node *n, Packet *p)
     m += p->toString() + " from " + n->toString();
     log(m);
 
-    std::function<void()> f = [n, p]()->void
+    std::function<void()> f = [n, p, this]()->void
     {
         std::string m = "packet out: ";
-        m += p->toString() + " to " + other(n).
-    }
-    // Node *nextNode = other(n);
-    // nextNode->pushPacket(p);
-    // std::cout << "Link: forwarding packet from node #" << n->id() << ", to node #" << other(n)->id() << std::endl;
-    // nextNode->receiving();
+        m += p->toString() + " to " + other(n)->toString();
+        log(m);
+        other(n)->receiving(p);
+    };
+    Simulator::schedule(Simulator::now() + delay_, f);
 }

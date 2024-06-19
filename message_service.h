@@ -22,12 +22,13 @@ private:
       : Service(host, port), destAddress_(destAddress), destPort_(destPort) {}
   Packet *p;
   std::vector<Packet *> pac;
+  virtual std::string name(){ return "MessageService"; }
 
 public:
   ~MessageService();
   // 메시지를 전송한다
   void send(std::string message);
-  void result();
+  void result(Packet *p);
 };
 
 #endif

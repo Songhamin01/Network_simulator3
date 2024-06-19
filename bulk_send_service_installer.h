@@ -11,7 +11,9 @@ public:
                            double delay = 1, double startTime = 0,
                            double stopTime = 10.)
   {
-
+    BulkSendService *bulk = new BulkSendService(host, destination, destPort, delay, startTime, stopTime);
+    ServiceInstaller::install(host, bulk);
+    return bulk;
   }
 };
 

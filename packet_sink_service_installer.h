@@ -7,7 +7,12 @@
 
 class PacketSinkServiceInstaller : public ServiceInstaller {
 public:
-  PacketSinkService *install(Host *host, short port);
+  PacketSinkService *install(Host *host, short port)
+  {
+    PacketSinkService *sink = new PacketSinkService(host, port);
+    ServiceInstaller::install(host, sink);
+    return sink;
+  }
 };
 
 #endif

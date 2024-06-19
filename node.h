@@ -12,6 +12,7 @@ class Node : public Object {
 private:
   int id_;
   static int nextId_;
+  virtual std::string name(){ return "Node"; }
 
 protected:
   Packet *packets;
@@ -19,12 +20,12 @@ protected:
 
 public:
   Node() : id_(nextId_++) {}
-  virtual ~Node();
+  virtual ~Node(){};
   int id() const { return id_; }
   Packet *getPacket() {return packets;}
   bool operator==(Node *a);
   void pushPacket(Packet *p);
-  virtual void receiving() = 0;
+  virtual void receiving(Packet *p) = 0;
 };
 
 #endif

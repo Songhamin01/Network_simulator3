@@ -11,16 +11,17 @@ EchoService::~EchoService()
     // }
 }
 
-void EchoService::result()
+void EchoService::result(Packet *p)
 {
-    std::cout << "EchoService: received \"" << host_->getPacket()->dataString() << "\" from " << ":" << host_->getPacket()->srcAddress().toString() << ":" << host_->getPacket()->srcPort() << ", send reply with same data" << std::endl;
-    send();
-    delete host_->getPacket();
+    std::string m = "received \"" + packets->dataString() + "\" from " + packets->srcAddress().toString() + ":" + std::to_string(packets->srcPort()) + " send reply with same data";
+    log(m);
+    send(p);
+    delete p;
 }
 
-void EchoService::send()
+void EchoService::send(Packet *p)
 {
-    packets = new Packet(host_->address(), host_->getPacket()->srcAddress(), port_, host_->getPacket()->srcPort(), host_->getPacket()->data());
+    packets = new Packet(host_->address(), p->srcAddress(), port_, p->srcPort(), p->data());
     host_->send(packets);
     // pac.push_back(packets);
 }

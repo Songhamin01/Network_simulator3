@@ -15,11 +15,11 @@ void MessageService::send(std::string message)
 {
     p = new Packet(host_->address(), destAddress_, port_, destPort_, message);
     host_->send(p);
-    // pac.push_back(p);
 }
 
-void MessageService::result()
+void MessageService::result(Packet *p)
 {
-    std::cout << "MessageService: received \"" << host_->getPacket()->dataString() << "\" from " << host_->getPacket()->srcAddress().toString() << ":" << host_->getPacket()->srcPort() << std::endl;
-    delete host_->getPacket();
+    std::string m = p->dataString();
+    log(m);
+    delete p;
 }

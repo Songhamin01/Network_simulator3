@@ -15,11 +15,12 @@ class EchoService : public Service {
 private:
   EchoService(Host *host, short port) : Service(host, port) {}
   Packet *packets;
+  virtual std::string name(){ return "EchoService"; }
 
 public:
   ~EchoService();
-  void send();
-  void result();
+  void send(Packet *p);
+  void result(Packet *p);
 };
 
 #endif

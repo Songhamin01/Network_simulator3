@@ -15,6 +15,7 @@ private:
 
   // 설치된 서비스 목록
   std::vector<Service *> services_;
+  virtual std::string name(){ return "Host"; }
 
 public:
   ~Host();
@@ -27,7 +28,7 @@ public:
 
   // 링크를 랜덤으로 하나 선택하여 패킷을 전송한다.
   void send(Packet *packet);
-  void receiving();
+  void receiving(Packet *p);
 };
 
 #endif
