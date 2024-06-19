@@ -21,7 +21,7 @@ protected:
 
 public:
   ~Router();
-  void receiving();
+  void receiving(Packet *p);
 };
 
 #endif
