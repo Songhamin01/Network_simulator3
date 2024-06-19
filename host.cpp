@@ -34,7 +34,7 @@ void Host::receiving(Packet *p)
         {
             m += ", forwarding to " + services_[i]->toString();
             log(m);
-            services_[i]->result();
+            services_[i]->result(p);
             isTrue = true;
             break;
         }
@@ -42,7 +42,8 @@ void Host::receiving(Packet *p)
 
     if (!isTrue)
     {
-        std::cout << "Host #" << id() << ": no service for packet (from: " << packets->srcAddress().toString() << ", to: " << packets->destAddress().toString() << ", " << packets->dataString().length() << " bytes" << std::endl;
+        m = "no service for packet: " + p->toString();
+        log(m);
         delete packets;
     }
     
