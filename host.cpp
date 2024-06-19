@@ -11,16 +11,13 @@ Host::~Host()
 }
 
 // 호스트와 설치된 서비스를 전부 초기화한다.
-void Host::initialize()
-{
-    
-}
 
 // 링크를 랜덤으로 하나 선택하여 패킷을 전송한다.
 void Host::send(Packet *packet)
 {
     int num = rand() % links_.size();
-    std::cout << "Host #" << id() << ": sending packet (from: " << packet->srcAddress().toString() << ", to: " << packet->destAddress().toString() << ", " << packet->dataString().length() << " bytes)" << std::endl;
+    std::string m = "sending packet: " + packet->toString();
+    log(m);
     links_.at(num)->whatLink(this, packet);
 }
 

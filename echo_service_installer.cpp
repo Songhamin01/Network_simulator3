@@ -4,6 +4,6 @@
 EchoService *EchoServiceInstaller::install(Host *host)
 {
     e = new EchoService(host, listenPort_);
-    this->ServiceInstaller::install(host, e);
+    ServiceInstaller::install(host, e);
     return e;
 }

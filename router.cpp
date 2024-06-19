@@ -6,7 +6,7 @@ Router::~Router()
     routingTable_.clear();
 }
 
-void Router::receiving()
+void Router::receiving(Packet *p)
 {
     bool isTrue = false;
     for(int i = 0; i < (int)routingTable_.size(); ++i)
@@ -14,7 +14,7 @@ void Router::receiving()
         if(routingTable_[i].destination == packets->destAddress())
         {
             isTrue = true;
-            std::cout << "Router #" << id() << ": forwarding packet (from: " << packets->srcAddress().toString() << ", to: " << packets->destAddress().toString() << ", " << packets->dataString().length() << "bytes)" << std::endl;
+            std::string m = "forwarding packet: " + p->toString() + " to " + routingTable_[i].nextLink->toString();
             routingTable_[i].nextLink->whatLink(this, packets);
             break;
         }
@@ -22,7 +22,9 @@ void Router::receiving()
 
     if (!isTrue)
     {
-        std::cout << "Router #" << id() << ": no router for packet (from: " << packets->srcAddress().toString() << ", to: " << packets->destAddress().toString() << ", " << packets->dataString().length() << " bytes)" << std::endl;
+        std::string m = "no route for packet: " + p->toString();
+        log(m);
+        delete p;
     }
 }
 

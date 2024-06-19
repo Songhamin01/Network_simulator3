@@ -21,11 +21,13 @@ public:
 
   Schedule(double time, std::function<void()> function)
       : time_(time), function_(function) {}
+  bool operator<(const Schedule s) const { return time_ > s.time_; }
 };
 
 class Simulator {
 private:
   static double time_;
+  static std::priority_queue<Schedule> pqs;
 
 public:
   static double now() { return time_; }
@@ -35,11 +37,19 @@ public:
   static void schedule(double time, std::function<void()> function) {
     // 스케줄 큐에 스케줄을 추가한다.
     // TODO: 구현
+    pqs.push(Schedule(time, function));
   }
 
   static void run() {
     // 모든 스케줄을 실행한다.
     // TODO: 구현
+    while (!pqs.empty())
+    {
+      Schedule s = pqs.top();
+      time_ = s.time();
+      s.call();
+      pqs.pop();
+    }
   }
 };
 

@@ -23,5 +23,4 @@ void EchoService::send(Packet *p)
 {
     packets = new Packet(host_->address(), p->srcAddress(), port_, p->srcPort(), p->data());
     host_->send(packets);
-    // pac.push_back(packets);
 }

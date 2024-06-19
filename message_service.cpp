@@ -2,14 +2,6 @@
 #include "packet.h"
 #include <iostream>
 
-MessageService::~MessageService()
-{
-    // for(Packet *p : pac)
-    // {
-    //     delete p;
-    // }
-}
-
 // 메시지를 전송한다
 void MessageService::send(std::string message)
 {
