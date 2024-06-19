@@ -43,7 +43,7 @@ public:
     }
   }
 
-  void result()
+  void result(Packet *p)
   {
     
   }
