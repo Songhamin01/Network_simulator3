@@ -14,8 +14,8 @@
 
 class AutoRouter : public Router {
 public:
-  bool v[10000];
-  int d[10000];
+  bool v[100];
+  int d[100];
   int start;
 
   int getSmallIndex(const std::vector<Node *> nodes) 
@@ -42,52 +42,78 @@ public:
      // 어떤 노드에서, 다른 노드로 최소거리로 갈수있는, 다음 홉
     std::vector<Link *> *linker = new std::vector<Link *>[nodes.size()];
     std::vector<std::pair<int, Link *>> *vec = new std::vector<std::pair<int, Link *>>[nodes.size()];
-    double matrix[10000][10000];
+    double matrix[100][100];
 
     for(int i = 0; i < nodes.size(); i++) {
       for(int j = 0; j < nodes.size(); j++) {
         Node* a = nodes[i];
         Node* b = nodes[j];
 
-        matrix[i][j] = 9999999;
+        matrix[i][j] = 99999999;
         for(int k = 0; k < links.size(); k++) {
           Link* l = links[k];
-          if(l->nodeA() == a && l->nodeB() == b) {
+          if(l->nodeA() == a && l->nodeB() == b) 
+          {
             matrix[i][j] = l->delay();
-            vec[i].push_back(std::make_pair(i, l));
+            matrix[j][i] = l->delay();
+            for (int x = 0; x < nodes.size(); x++)
+            {
+              if (nodes[x] == l->other(nodes[i]))
+              {
+                vec[i].push_back(std::make_pair(x, l));
+              }
+            }
           }
+
+          if(i == j)
+            matrix[i][j] = 0;
         }
       }
     }
 
-    std::vector<Link *> *linker = new std::vector<Link *>[nodes.size()];
     for(int i = 0; i < nodes.size(); i++)
     {
       if (nodes[i] == this)
+      {
         start = i;
+        break;
+      }
     }
     // 다익스트라를 돌리면서 호스트에 대한 최소경로로 갈수잇는 다음 홉을 기록
     for(int i = 0; i < nodes.size(); i++)
     {
       d[i] = matrix[start][i];
     }
+
     v[start] = true;
     for(int i = 0; i < nodes.size()-1; i++)
     {
       int cur = getSmallIndex(nodes);
       v[cur] = true;
+      std::vector<Link *> path;
       for(int j = 0; j < nodes.size(); j++)
       {
         if(!v[j])
         {
           if(d[cur] + matrix[cur][j] < d[j])
+          {
             d[j] = d[cur] + matrix[cur][j];
-            linker[j].push_back(vec[i][j].second);
+            int next = getSmallIndex(nodes);
+            for(int k = 0; k < vec[i].size(); k++)
+            {
+              if (vec[i][k].first == next)
+              {
+                path.push_back(vec[i][k].second);
+              }
+            }
+          }
+          linker[j] = path;
         }
       }
     }
 
-    for(int i = 0; i < nodes.size(); i++) {
+    for(int i = 0; i < nodes.size(); i++) 
+    {
       Node* node = nodes[i];
       Host* host = dynamic_cast<Host*>(node);
       if(host != nullptr) 
@@ -98,6 +124,11 @@ public:
         routingTable_.push_back(re);
       }
     }
+
+    vec->clear();
+    linker->clear();
+    delete[] vec;
+    delete[] linker;
   }
 };
 

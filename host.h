@@ -18,6 +18,7 @@ private:
   virtual std::string name(){ return "Host"; }
 
 public:
+  Host(Address address) : address_(address){};
   ~Host();
   Address address() { return address_; }
   Host(Address address) : address_(address) {}
